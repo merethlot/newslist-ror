@@ -1,0 +1,22 @@
+- @articles.each_with_index do |article, index|
+  .news-item-wrapper{class: ("news-item-big-wrapper" if index == @big_index)}
+    %article.news-item
+      .news-item-image{style: "background-image:url(#{article['big_image_url']});"}
+      .news-item-tag{class: "tag-type-#{article['type']}"} 
+        = article['rubric']
+      .news-item-description
+        .news-item-title
+          %a{:href => "#{article['article_url']}"} 
+            = article['title']
+        .news-item-text
+          = article['announce']
+        .news-item-info
+          %span.news-item-views
+            %i.icon-eye
+            = article['view_count']
+          %span.news-item-comments
+            %i.icon-question
+            = article['comment_count']
+          %span.news-item-clock
+            %i.icon-clock
+            = article['publish_date']
