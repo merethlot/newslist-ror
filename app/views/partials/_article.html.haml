@@ -13,10 +13,10 @@
         .news-item-info
           %span.news-item-views
             %i.icon-eye
-            = article['view_count']
+            = article['view_count'].to_i > 999 ? (article['view_count'].to_i / 1000).to_s + 'K' : article['view_count']
           %span.news-item-comments
             %i.icon-question
             = article['comment_count']
           %span.news-item-clock
             %i.icon-clock
-            = article['publish_date']
+            = time_ago_in_words(article['publish_date'])

@@ -14,6 +14,7 @@ class HomeController < ApplicationController
     @articles = JSON.parse(response)
     @@page += 1
     @big_index = @@page % 2
+    p @@page
     render json: { articles: render_to_string('partials/_article', layout: false, locals: { articles: @articles, page: @big_index}) }
   end
 end
